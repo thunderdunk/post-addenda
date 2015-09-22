@@ -187,12 +187,13 @@ function postaddenda_insert_value( $content ) {
 	$addenda_post = get_post( $addenda_id );
 	$addenda_content = wpautop( $addenda_post->post_content, true); //retain paragraph formatting
 
-	$content .= '<aside class="addendum">';
-	$content .= $addenda_content;
-	$content .= '</aside>';
+	if( get_post_meta( $post->ID, '_postaddenda_choice_value_key', true ) ) {
+		$content .= '<aside class="addendum">';
+		$content .= $addenda_content;
+		$content .= '</aside>';
+	}
+
 	return $content;
-
-
 
 }
 add_filter ( 'the_content', 'postaddenda_insert_value' );
