@@ -187,7 +187,7 @@ function postaddenda_insert_value( $content ) {
 	$addenda_post = get_post( $addenda_id );
 	$addenda_content = wpautop( $addenda_post->post_content, true); //retain paragraph formatting
 
-	if( get_post_meta( $post->ID, '_postaddenda_choice_value_key', true ) ) {
+	if( is_single() && get_post_meta( $post->ID, '_postaddenda_choice_value_key', true ) ) {
 		$content .= '<aside class="addendum">';
 		$content .= $addenda_content;
 		$content .= '</aside>';
