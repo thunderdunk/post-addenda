@@ -8,6 +8,7 @@ Version: 1.0
 Author URI: http://heptagoncreative.com
 */
 
+
 //Register Post Type Addenda
 add_action( 'init', 'addenda_cpt_register' );
 
@@ -31,7 +32,7 @@ function addenda_cpt_register() {
 
 	$args = array(
 		'labels'             => $labels,
-		//'menu_icon'			=> 'dashicons-id',
+		'menu_icon'			 => 'dashicons-plus-alt',
 		'public'             => true,
 		'publicly_queryable' => true,
 		'show_ui'            => true,
@@ -155,8 +156,6 @@ function postaddenda_save_meta_box_data( $post_id ) {
 	// Safe to save data
 
 	// Make sure that it is set
-
-	// Make sure that it is set
 	if( ! isset( $_POST['postaddenda_choices'] ) ){
 		return;
 	}
@@ -193,9 +192,9 @@ function postaddenda_insert_value( $content ) {
 		$content .= '<aside class="addendum">';
 
 		if( get_post_meta($post->ID, 'cb-show-title', true) == true ) {
-			$content .= '<h2 class="addenda-title">' . $addenda_post->post_title . '</h2>';
+			$content .= '<h3 class="addenda-title">' . $addenda_post->post_title . '</h3>';
 		}
-		// $content .= $addenda_title;
+
 		$content .= $addenda_content;
 		$content .= '</aside>';
 	}
@@ -204,6 +203,7 @@ function postaddenda_insert_value( $content ) {
 
 }
 add_filter ( 'the_content', 'postaddenda_insert_value' );
+
 
 
 ?>
