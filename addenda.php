@@ -56,10 +56,12 @@ function postaddenda_add_meta_box() {
 
 	foreach ( $screens as $screen ) {
 		add_meta_box(
-			'post_addenda_chooser',
-			__( 'Choose Addendum', 'post-addenda' ),
-			'postaddenda_meta_box_callback',
-			$screen
+			'post_addenda_chooser',	// id
+			__( 'Choose Addendum', 'post-addenda' ), // title
+			'postaddenda_meta_box_callback',  // callback function
+			$screen,  // write screen
+			'normal',  // context
+			'high' // priority
 		);
 	}
 }
@@ -72,16 +74,16 @@ function postaddenda_meta_box_callback( $post ) {
 	// Add a nonce field so we can check for it later
 	wp_nonce_field( 'postaddenda_save_meta_box_data', 'postaddenda_meta_box_nonce' );
 
+
+	$custom = get_post_custom($post->ID);
+	$cb_show_title = $custom['cb-show-title'][0]; ?>
+
+	<p>
+		<input type="checkbox" id="cb_show_title" name="cb-show-title" <?php if( $cb_show_title == true ) { ?> checked="checked"<?php } ?> /> <label for="cb-show-title">Show the title</label>
+	</p>
+	<?php
+
 	// Use get_post_meta() to retrieve an existing value from the database and use the value for the form
-	$value = get_post_meta( $post->ID, '_postaddenda_value_key', true );
-
-	echo '<p><label for="postaddenda_new_field">';
-	_e( 'Title (leave blank for no title)', 'post-addenda' );
-	echo '</label></p>';
-
-	echo '<p><input type="text" id="postaddenda_new_field" name="postaddenda_new_field" value="' . esc_attr( $value ) . '" size="25" /></p>';
-
-
 	$addenda_choice = get_post_meta( $post->ID, '_postaddenda_choice_value_key', true );
 
 	//Set up page selector
@@ -153,9 +155,6 @@ function postaddenda_save_meta_box_data( $post_id ) {
 	// Safe to save data
 
 	// Make sure that it is set
-	if( ! isset( $_POST['postaddenda_new_field'] ) ){
-		return;
-	}
 
 	// Make sure that it is set
 	if( ! isset( $_POST['postaddenda_choices'] ) ){
@@ -163,13 +162,13 @@ function postaddenda_save_meta_box_data( $post_id ) {
 	}
 
 	// Sanitize user input
-	$addenda_data = sanitize_text_field( $_POST['postaddenda_new_field'] );
+
 
 	$addenda_choice = $_POST['postaddenda_choices'];
 
 	// Update the meta field in the database
-	update_post_meta( $post_id, '_postaddenda_value_key', $addenda_data );
 	update_post_meta( $post_id, '_postaddenda_choice_value_key', $addenda_choice);
+	update_post_meta( $post_id, 'cb-show-title', $_POST['cb-show-title']);
 }
 add_action( 'save_post', 'postaddenda_save_meta_box_data' );
 
@@ -185,10 +184,18 @@ function postaddenda_insert_value( $content ) {
 	$addenda_id = get_post_meta( $post->ID, '_postaddenda_choice_value_key', true );
 
 	$addenda_post = get_post( $addenda_id );
+
+
+
 	$addenda_content = wpautop( $addenda_post->post_content, true); //retain paragraph formatting
 
 	if( is_single() && get_post_meta( $post->ID, '_postaddenda_choice_value_key', true ) ) {
 		$content .= '<aside class="addendum">';
+
+		if( get_post_meta($post->ID, 'cb-show-title', true) == true ) {
+			$content .= '<h2 class="addenda-title">' . $addenda_post->post_title . '</h2>';
+		}
+		// $content .= $addenda_title;
 		$content .= $addenda_content;
 		$content .= '</aside>';
 	}
