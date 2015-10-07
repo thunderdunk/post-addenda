@@ -1,16 +1,6 @@
-=== Plugin Name ===
-Contributors: thunderdunk
-Donate link: http://example.com/
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 4.3.1
-Stable tag: 4.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
 Easily create and format disclaimers, bios, or any other type of content and add below your posts and pages. Lightweight, no frills.
 
-== Description ==
+### Description ###
 
 Post Addenda is a lightweight, simple plugin that allows you to create reusable content to tack on to the end of posts. This is great for disclaimers, bios, ads or promos, or anything that you might want to include with your post.
 
@@ -34,14 +24,14 @@ __Add an Addendum to a Post__
 *Note: If you don't want an Addendum, don't pick one!*
 
 
-== Installation ==
+### Installation ###
 
 1. Upload `post-addenda` to the `/wp-content/plugins/` directory, or install via *Plugins > Add New*.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Add a new Addendum through the **Post Addenda** menu in your admin area.
 4. Select the Addendum to add to your post by picking from the dropdown box on the Post Edit screen.
 
-== Frequently Asked Questions ==
+### Frequently Asked Questions ###
 
 = Can I reuse my Addenda? =
 
@@ -59,16 +49,16 @@ Yes, you can! You can use all the tools available in the content editor, and the
 
 There's a 'Horizontal line' button in the Visual Editor, use that.
 
-== Screenshots ==
+### Screenshots ###
 
 1. Addenda are added and managed just like posts, under the **Post Addenda** menu in your Admin area.
 2. Create your Addendum just like a regular post. Use images, text formatting, headings, links, whatever you want!
 3. Add an Addendum to your post by simply selecting it from the dropdown menu on that post's Edit screen. If you want to display the title as well, just tick the box!
 
-== Changelog ==
+### Changelog ###
 
 = 1.0 =
 
 
-== Upgrade Notice ==
+### Upgrade Notice ###
 
