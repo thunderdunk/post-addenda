@@ -57,8 +57,5 @@ There's a 'Horizontal line' button in the Visual Editor, use that.
 
 ### Changelog ###
 
-= 1.0 =
-
-
-### Upgrade Notice ###
+Nothing yet!
 

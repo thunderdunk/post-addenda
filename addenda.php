@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Content Addenda
-Plugin URI: https://github.com/thunderdunk/post-addenda
-Description: Create disclaimers or other bits of text to add to the end of blog posts.
+Plugin Name: Heptagon Post Addenda
+Plugin URI: http://heptagoncreative.com/post-addenda-wordpress-plugin/
+Description: Create disclaimers or other bits of text and add them to the end of your posts.
 Author: Dan Sweet
 Version: 1.0
 Author URI: http://heptagoncreative.com

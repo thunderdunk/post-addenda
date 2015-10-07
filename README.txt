@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: thunderdunk
-Donate link: http://example.com/
+Donate link: http://heptagoncreative.com/post-addenda-wp-plugin/
 Tags: comments, spam
 Requires at least: 3.0.1
 Tested up to: 4.3.1
@@ -72,3 +72,4 @@ There's a 'Horizontal line' button in the Visual Editor, use that.
 
 == Upgrade Notice ==
 
+= 1.0 =
